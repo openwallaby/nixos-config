@@ -18,6 +18,12 @@
   # Flakes (gross)
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Graphics Drivers
+  hardware.graphics = {
+    enable = true;
+    extraPackages = [ pkgs.amdvlk ];
+  };
+
   networking.hostName = "framework"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -104,6 +110,14 @@
     HandlePowerKey=suspend
   ";
 
+  systemd.sleep.extraConfig = "
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  ";
+
+  services.tlp.enable = true;
+
   # Fingerprint
   services.fprintd.enable = true;
 
@@ -119,7 +133,6 @@
      eww
      mako
      hyprpolkitagent
-     haskellPackages.sixel
      hyprpaper
      btop
      brightnessctl
@@ -130,6 +143,8 @@
      hyprcursor
      nwg-look
      bluetui
+     texliveFull
+     zathura
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

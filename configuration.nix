@@ -124,27 +124,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim
-     yazi
-     git
-     alacritty
-     firefox
-     fuzzel
-     eww
-     mako
      hyprpolkitagent
      hyprpaper
-     btop
      brightnessctl
      playerctl
-     ncspot
-     cava
      fprintd
      hyprcursor
-     nwg-look
-     bluetui
-     texliveFull
-     zathura
+     exfat
+     unzip
+     udftools
+     unixtools.xxd
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
